@@ -1,0 +1,21 @@
+# Browsers that the application supports
+# Modern browsers to optimize performance while maintaining compatibility
+
+# Last 2 versions of major browsers
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Safari versions
+last 2 Edge versions
+
+# iOS and macOS
+iOS >= 12
+Safari >= 12
+
+# Android
+Android >= 7
+
+# Not dead browsers (browsers with official support)
+not dead
+
+# Reasonable market share
+> 0.5%
