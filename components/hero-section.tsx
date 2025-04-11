@@ -69,7 +69,7 @@ export function HeroSection({ loaded }: HeroSectionProps) {
     <motion.div
       ref={heroRef}
       style={{ opacity, scale }}
-      className="flex min-h-screen flex-col items-center justify-center p-4 md:p-44 pt-44"
+      className="flex min-h-screen flex-col items-center justify-center p-4 md:p-44 pt-24"
     >
       <div className="max-w-5xl mx-auto text-center">
         <motion.p

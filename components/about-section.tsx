@@ -79,7 +79,7 @@ export const AboutSection = memo(function AboutSection() {
             >
               <div className="w-20 h-20 md:w-28 md:h-28 bg-[#e5e5e5] relative overflow-hidden rounded-full flex-shrink-0">
                 <Image
-                  src="/placeholder-user.jpg"
+                  src="/sonja.jpg"
                   alt="Sonja - UX/UI Designer"
                   width={112}
                   height={112}
@@ -102,7 +102,7 @@ export const AboutSection = memo(function AboutSection() {
             >
               <div className="w-20 h-20 md:w-28 md:h-28 bg-[#e5e5e5] relative overflow-hidden rounded-full flex-shrink-0">
                 <Image
-                  src="/ramil.jpg"
+                  src="/ramil-bw.png"
                   alt="Ramil - Web Developer"
                   width={112}
                   height={112}
