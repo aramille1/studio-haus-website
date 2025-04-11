@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { Building2, ChevronDown, Laptop, RefreshCw, Trash2, Wrench } from "lucide-react"
 import { useRef } from "react"
 import { IconWrapper } from "./ui/icon-wrapper"
+import Link from "next/link"
 
 interface HeroSectionProps {
   loaded: boolean
@@ -14,6 +15,55 @@ export function HeroSection({ loaded }: HeroSectionProps) {
   const { scrollY } = useScroll()
   const opacity = useTransform(scrollY, [0, 200], [1, 0])
   const scale = useTransform(scrollY, [0, 200], [1, 0.95])
+
+  // Animation variants for the border lines
+  const topLineVariants = {
+    hidden: { scaleX: 0, opacity: 0, originX: 0 },
+    visible: {
+      scaleX: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+        delay: 3.0
+      }
+    }
+  };
+
+  const rightLineVariants = {
+    hidden: { scaleY: 0, opacity: 0, originY: 0 },
+    visible: {
+      scaleY: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+        delay: 3.4
+      }
+    }
+  };
+
+  const bottomLineVariants = {
+    hidden: { scaleX: 0, opacity: 0, originX: 1 },
+    visible: {
+      scaleX: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+        delay: 3.8
+      }
+    }
+  };
+
+  const leftLineVariants = {
+    hidden: { scaleY: 0, opacity: 0, originY: 1 },
+    visible: {
+      scaleY: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+        delay: 4.2
+      }
+    }
+  };
 
   return (
     <motion.div
@@ -36,8 +86,53 @@ export function HeroSection({ loaded }: HeroSectionProps) {
           <IconWrapper icon={<Laptop className="w-10 h-10 md:w-12 md:h-12" />} delay={2.0} /> that last — clear,
           human, and made for real people. No fluff, just tools{" "}
           <IconWrapper icon={<Wrench className="w-10 h-10 md:w-12 md:h-12" />} delay={2.4} /> that make it easier
-          for your audience to stay, click, and come back. Let's create something that actually works — and keeps
-          working. <IconWrapper icon={<RefreshCw className="w-10 h-10 md:w-12 md:h-12" />} delay={2.8} />
+          for your clients to stay, click, and come back. <br />
+
+          <motion.div
+            className="relative inline-block mt-2 px-8 py-4 cursor-pointer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: loaded ? 1 : 0 }}
+            transition={{ duration: 0.5, delay: 3.0 }}
+            whileHover={{ scale: 1.05 }}
+          >
+            {/* Top line */}
+            <motion.div
+              className="absolute top-0 left-0 w-full h-[1px] bg-current"
+              variants={topLineVariants}
+              initial="hidden"
+              animate="visible"
+            />
+
+            {/* Right line */}
+            <motion.div
+              className="absolute top-0 right-0 w-[1px] h-full bg-current"
+              variants={rightLineVariants}
+              initial="hidden"
+              animate="visible"
+            />
+
+            {/* Bottom line */}
+            <motion.div
+              className="absolute bottom-0 left-0 w-full h-[1px] bg-current"
+              variants={bottomLineVariants}
+              initial="hidden"
+              animate="visible"
+            />
+
+            {/* Left line */}
+            <motion.div
+              className="absolute top-0 left-0 w-[1px] h-full bg-current "
+              variants={leftLineVariants}
+              initial="hidden"
+              animate="visible"
+            />
+        <Link href="#contact" className="hover:opacity-60 transition-opacity">
+
+            <span className="">Let's create it together!</span>
+        </Link>
+          </motion.div>
+
+          {/* <IconWrapper icon={<RefreshCw className="w-10 h-10 md:w-12 md:h-12" />} delay={2.8} /> */}
         </motion.p>
       </div>
 
