@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { MobileMenu } from "@/components/mobile-menu"
 import { ProjectCard } from "@/components/ui/project-card"
+import { getAllProjects, generateDummyProjects } from "@/lib/projects"
 import { motion } from "framer-motion"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
@@ -11,6 +12,11 @@ import { useState } from "react"
 
 export default function WorkPage() {
   const [menuOpen, setMenuOpen] = useState(false)
+
+  // Get real projects and generate additional dummy ones for the grid
+  const realProjects = getAllProjects();
+  const dummyProjects = generateDummyProjects(10); // Generate 10 dummy projects
+  const allProjects = [...realProjects, ...dummyProjects];
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
@@ -37,8 +43,8 @@ export default function WorkPage() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {Array.from({ length: 12 }).map((_, index) => (
-            <ProjectCard key={index} index={index + 1} />
+          {allProjects.map((project, index) => (
+            <ProjectCard key={project.id} index={index + 1} item={project} />
           ))}
         </div>
       </div>

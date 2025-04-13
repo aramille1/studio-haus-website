@@ -4,14 +4,30 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { MobileMenu } from "@/components/mobile-menu"
 import { ProjectSection } from "@/components/project-detail/project-section"
+import { getAllProjects, getProjectById } from "@/lib/projects"
 
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [nextProjectId, setNextProjectId] = useState<number | null>(null)
+
+  useEffect(() => {
+    const allProjects = getAllProjects();
+    const currentProjectId = parseInt(params.slug, 10);
+
+    // Find the next project
+    const currentIndex = allProjects.findIndex(p => p.id === currentProjectId);
+    if (currentIndex !== -1 && currentIndex < allProjects.length - 1) {
+      setNextProjectId(allProjects[currentIndex + 1].id);
+    } else if (allProjects.length > 0) {
+      // If this is the last project, loop back to the first one
+      setNextProjectId(allProjects[0].id);
+    }
+  }, [params.slug]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
@@ -24,28 +40,30 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
 
       <div className="px-6 md:px-12 lg:px-24 py-12 pt-32">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-          <Link href="/work" className="inline-flex items-center text-xl hover:opacity-60 transition-opacity mb-12">
+          <Link href="/#work" className="inline-flex items-center text-xl hover:opacity-60 transition-opacity mb-12">
             <ArrowLeft className="mr-2 w-5 h-5" /> Back to work
           </Link>
         </motion.div>
 
         <ProjectSection slug={params.slug} />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-24 text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-light mb-8">Next Project</h2>
-          <Link
-            href={`/work/${Number.parseInt(params.slug) + 1}`}
-            className="inline-flex items-center text-xl hover:opacity-60 transition-opacity"
+        {nextProjectId !== null && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mt-24 text-center"
           >
-            View next project <ArrowRight className="ml-2 w-5 h-5" />
-          </Link>
-        </motion.div>
+            <h2 className="text-3xl md:text-4xl font-light mb-8">Next Project</h2>
+            <Link
+              href={`/work/${nextProjectId}`}
+              className="inline-flex items-center text-xl hover:opacity-60 transition-opacity"
+            >
+              View next project <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
+          </motion.div>
+        )}
       </div>
 
       <Footer />
