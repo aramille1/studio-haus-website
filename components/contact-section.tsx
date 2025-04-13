@@ -12,10 +12,10 @@ export function ContactSection() {
         viewport={{ once: true, margin: "-100px" }}
         className="max-w-7xl mx-auto"
       >
-        <h2 className="text-5xl md:text-6xl font-serif italic mb-16">Contact</h2>
+        <h2 className="text-5xl md:text-6xl text-center mb-16">Get your FREE WEBSITE</h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
+        <div className="w-3/5 mx-auto">
+          {/* <div>
             <motion.p
               className="text-xl md:text-2xl leading-relaxed font-light"
               initial={{ opacity: 0, y: 20 }}
@@ -53,7 +53,7 @@ export function ContactSection() {
                 Germany
               </address>
             </motion.div>
-          </div>
+          </div> */}
 
           <motion.form
             className="grid gap-6"
