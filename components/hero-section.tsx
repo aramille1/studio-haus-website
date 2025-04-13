@@ -89,7 +89,7 @@ export function HeroSection({ loaded }: HeroSectionProps) {
           for your clients to stay, click, and come back. <br />
 
           <motion.div
-            className="relative inline-block mt-2 px-8 py-4 cursor-pointer"
+            className="relative inline-block mt-4 px-8 py-4 cursor-pointer"
             initial={{ opacity: 0 }}
             animate={{ opacity: loaded ? 1 : 0 }}
             transition={{ duration: 0.5, delay: 3.0 }}

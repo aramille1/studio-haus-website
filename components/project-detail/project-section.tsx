@@ -67,7 +67,7 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="aspect-video bg-[#e5e5e5] relative overflow-hidden"
         >
-          <Image src={project.image || "/placeholder.svg"} alt={`${project.title} hero`} fill className="object-cover" />
+          <Image src={project.image || "/placeholder.svg"} alt={`${project.title} hero`} fill className="border" />
         </motion.div>
       </div>
 
@@ -104,7 +104,7 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
             </div>
 
             <div className="aspect-video bg-[#e5e5e5] relative overflow-hidden">
-              <Image src={project.gallery?.[1] || "/placeholder.svg"} alt="Our approach" fill className="object-cover" />
+              <Image src={project.gallery?.[1] || "/placeholder.svg"} alt="Our approach" fill className="border" />
             </div>
           </motion.div>
         </section>
@@ -158,7 +158,7 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
           viewport={{ once: true }}
           className="aspect-video bg-[#e5e5e5] relative overflow-hidden"
         >
-          <Image src={project.gallery?.[0] || "/placeholder.svg"} alt={`${project.title} gallery 1`} fill className="object-cover" />
+          <Image src={project.gallery?.[0] || "/placeholder.svg"} alt={`${project.title} gallery 1`} fill className="border" />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -169,7 +169,7 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
             viewport={{ once: true }}
             className="aspect-square bg-[#e5e5e5] relative overflow-hidden"
           >
-            <Image src={project.gallery?.[2] || "/placeholder.svg"} alt={`${project.title} gallery 2`} fill className="object-cover" />
+            <Image src={project.gallery?.[2] || "/placeholder.svg"} alt={`${project.title} gallery 2`} fill className="border" />
           </motion.div>
 
           <motion.div
@@ -179,7 +179,7 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
             viewport={{ once: true }}
             className="aspect-square bg-[#e5e5e5] relative overflow-hidden"
           >
-            <Image src={project.gallery?.[3] || "/placeholder.svg"} alt={`${project.title} gallery 3`} fill className="object-cover" />
+            <Image src={project.gallery?.[3] || "/placeholder.svg"} alt={`${project.title} gallery 3`} fill className="border" />
           </motion.div>
         </div>
       </div>

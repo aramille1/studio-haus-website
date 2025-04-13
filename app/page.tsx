@@ -23,15 +23,19 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f8f8f8] text-[#333333] overflow-x-hidden">
+    <main className="min-h-screen h-screen bg-[#f8f8f8] text-[#333333] overflow-hidden flex flex-col">
       <Header menuOpen={menuOpen} toggleMenu={toggleMenu} />
       <MobileMenu menuOpen={menuOpen} toggleMenu={toggleMenu} />
-      <HeroSection loaded={loaded} />
-      <WorkSection />
-      <AboutSection />
-      <ServicesSection />
-      <ContactSection />
-      <Footer />
+
+      <div className="flex-grow overflow-y-auto snap-y snap-mandatory scroll-smooth">
+        <div className="snap-start"><HeroSection loaded={loaded} /></div>
+        <div className="snap-start"><WorkSection /></div>
+        <div className="snap-start"><AboutSection /></div>
+        <div className="snap-start"><ServicesSection /></div>
+        <div className="snap-start"><ContactSection /></div>
+        <div className="snap-end"><Footer /></div>
+      </div>
+
     </main>
   )
 }
