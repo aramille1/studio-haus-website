@@ -46,8 +46,7 @@ export const AboutSection = memo(function AboutSection() {
               variants={fadeInUp}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Through thoughtful design and innovative development, we build websites and digital platforms that don't just
-              meet business objectives—they exceed them, creating memorable journeys that resonate with audiences and drive results.
+              We believe you shouldn't have to choose between beautiful design and functional experience. We create digital spaces that are exquisite both inside and out.
             </motion.p>
           </div>
         </div>

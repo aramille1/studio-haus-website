@@ -45,14 +45,48 @@
 }
 
 @font-face {
-  font-family: "Juliet Serif";
-  src: local("Georgia"), local("Times New Roman"), serif;
+  font-family: "Denton";
+  src: url('/fonts/Denton-Regular.woff2') format('woff2'),
+       url('/fonts/Denton-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Denton";
+  src: url('/fonts/Denton-Italic.woff2') format('woff2'),
+       url('/fonts/Denton-Italic.woff') format('woff');
+  font-weight: normal;
   font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Denton";
+  src: url('/fonts/Denton-Bold.woff2') format('woff2'),
+       url('/fonts/Denton-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Denton";
+  src: url('/fonts/Denton-Light.woff2') format('woff2'),
+       url('/fonts/Denton-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 h1,
 h2 {
-  font-family: "Juliet Serif", Georgia, "Times New Roman", serif;
+  font-family: "Denton", Georgia, "Times New Roman", serif;
+}
+
+.font-serif {
+  font-family: "Denton", Georgia, "Times New Roman", serif;
 }
 
 /* For WebKit browsers (Chrome, Safari) */

@@ -25,7 +25,7 @@ export function WorkSection() {
             <ProjectCard key={item.id} index={item.id} item={item} />
           ))}
         </div>
-{/* 
+{/*
         <div className="mt-16 text-center">
           <Link href="/work" className="inline-flex items-center text-xl hover:opacity-60 transition-opacity">
             View all work <ArrowRight className="ml-2 w-5 h-5" />

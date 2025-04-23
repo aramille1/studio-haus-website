@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
-import { Building2, ChevronDown, Laptop, RefreshCw, Trash2, Wrench } from "lucide-react"
+import { House, ChevronDown, Laptop, RefreshCw, Trash2, Wrench, Sparkles, BicepsFlexed } from "lucide-react"
 import { useRef } from "react"
 import { IconWrapper } from "./ui/icon-wrapper"
 import Link from "next/link"
@@ -69,25 +69,32 @@ export function HeroSection({ loaded }: HeroSectionProps) {
     <motion.div
       ref={heroRef}
       style={{ opacity, scale }}
-      className="flex min-h-screen flex-col items-center justify-center p-4 md:p-44 pt-24"
+      className="flex min-h-screen flex-col items-center justify-center p-4 md:p-44 pt-28"
     >
       <div className="max-w-5xl mx-auto text-center">
         <motion.p
-          className="text-3xl md:text-4xl lg:text-5xl leading-normal font-light "
+          className="text-3xl md:text-4xl lg:text-5xl leading-normal font-light"
+          style={{ lineHeight: 1.2 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: loaded ? 1 : 0 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          We get it. In Berlin{" "}
-          <IconWrapper icon={<Building2 className="w-10 h-10 md:w-12 md:h-12" />} delay={1.2} />, everything moves
+          Like your dream house <IconWrapper icon={<House className="w-10 h-10 md:w-12 md:h-12 mb-2 mx-2" />} delay={1.2} />
+          your website should be functional <IconWrapper icon={<Wrench className="w-10 h-10 md:w-12 md:h-12 mb-2 mx-2" />} delay={1.6} />
+          well constructed, and look stunning <IconWrapper icon={<Sparkles className="w-10 h-10 md:w-12 md:h-12 mb-2 mx-2" />} delay={2.0} />
+          We design and build digital homes that do it all.
+
+          Ready to move online? We’ll handle the heavy lifting<IconWrapper icon={<BicepsFlexed className="w-10 h-10 md:w-12 md:h-12 mb-2 mx-2" />} delay={2.4} />
+
+          {/* <IconWrapper icon={<Building2 className="w-10 h-10 md:w-12 md:h-12" />} delay={1.2} />, everything moves
           fast. One site here, another gone{" "}
           <IconWrapper icon={<Trash2 className="w-10 h-10 md:w-12 md:h-12" />} delay={1.6} />. Designs fade. Code
           breaks. Users bounce. But not yours. We build websites{" "}
           <IconWrapper icon={<Laptop className="w-10 h-10 md:w-12 md:h-12" />} delay={2.0} /> that last — clear,
           human, and made for real people. No fluff, just tools{" "}
           <IconWrapper icon={<Wrench className="w-10 h-10 md:w-12 md:h-12" />} delay={2.4} /> that make it easier
-          for your clients to stay, click, and come back. <br />
-
+          for your clients to stay, click, and come back. <br /> */}
+<br />
           <motion.div
             className="relative inline-block mt-4 px-8 py-4 cursor-pointer"
             initial={{ opacity: 0 }}
@@ -120,19 +127,16 @@ export function HeroSection({ loaded }: HeroSectionProps) {
             />
 
             {/* Left line */}
-            <motion.div
+          <motion.div
               className="absolute top-0 left-0 w-[1px] h-full bg-current "
               variants={leftLineVariants}
               initial="hidden"
               animate="visible"
             />
-        <Link href="#contact" className="hover:opacity-60 transition-opacity">
-
-            <span className="">Let's create it together!</span>
-        </Link>
+              <Link href="#contact" className="hover:opacity-60 transition-opacity">
+                  <span className="">Let's do it!</span>
+              </Link>
           </motion.div>
-
-          {/* <IconWrapper icon={<RefreshCw className="w-10 h-10 md:w-12 md:h-12" />} delay={2.8} /> */}
         </motion.p>
       </div>
 

@@ -12,7 +12,9 @@ export function ContactSection() {
         viewport={{ once: true, margin: "-100px" }}
         className="max-w-7xl mx-auto"
       >
-        <h2 className="text-5xl md:text-6xl text-center mb-16">Get your FREE WEBSITE</h2>
+        <h2 className="text-5xl md:text-6xl text-center mb-16">Get your free website</h2>
+        {/* <Sparkles /> */}
+        {/* add before and after text */}
 
         <div className="w-3/5 mx-auto">
           {/* <div>

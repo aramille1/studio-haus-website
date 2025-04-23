@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { BarChart2, Eye, Globe, Heart, Wrench } from "lucide-react"
+import { Code, Globe, Lightbulb, Search, Palette } from "lucide-react"
 import { ServiceCard } from "./ui/service-card"
 
 export function ServicesSection() {
@@ -16,42 +16,30 @@ export function ServicesSection() {
       >
         <h2 className="text-5xl md:text-6xl font-serif italic mb-16">Services</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <ServiceCard
-            title="Brand Strategy"
-            description="We help you find your unique voice and position in the market."
-            icon={<Eye className="w-8 h-8" />}
+            title="Branding"
+            description="We craft memorable brand identities that resonate with your audience. From logo design to brand guidelines, we help you stand out in a crowded market."
+            icon={<Lightbulb className="w-8 h-8" />}
             delay={0.1}
           />
           <ServiceCard
-            title="Creative Platform"
-            description="We develop multi-year platforms that build lasting connections."
-            icon={<Heart className="w-8 h-8" />}
+            title="Web Design"
+            description="Our design team creates beautiful, responsive websites that deliver exceptional user experiences. We focus on clean aesthetics and intuitive navigation."
+            icon={<Palette className="w-8 h-8" />}
             delay={0.2}
           />
           <ServiceCard
-            title="Content Creation"
-            description="We produce content that brings your brand story to life."
-            icon={<Globe className="w-8 h-8" />}
+            title="Web Development"
+            description="We build robust, scalable websites and web applications using the latest technologies. From simple landing pages to complex e-commerce solutions."
+            icon={<Code className="w-8 h-8" />}
             delay={0.3}
           />
           <ServiceCard
-            title="Campaign Development"
-            description="We create integrated campaigns that drive results."
-            icon={<BarChart2 className="w-8 h-8" />}
+            title="SEO"
+            description="Boost your online visibility with our comprehensive SEO strategies. We improve your search engine rankings and drive targeted organic traffic to your website."
+            icon={<Search className="w-8 h-8" />}
             delay={0.4}
-          />
-          <ServiceCard
-            title="Digital Experience"
-            description="We design digital touchpoints that enhance your brand."
-            icon={<Wrench className="w-8 h-8" />}
-            delay={0.5}
-          />
-          <ServiceCard
-            title="Brand Measurement"
-            description="We help you track and optimize your brand performance."
-            icon={<BarChart2 className="w-8 h-8" />}
-            delay={0.6}
           />
         </div>
       </motion.div>
