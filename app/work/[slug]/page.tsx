@@ -9,15 +9,18 @@ import { getAllProjects, getProjectById } from "@/lib/projects"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, use } from "react"
 
 export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [nextProjectId, setNextProjectId] = useState<number | null>(null)
 
+  // Unwrap params at the component level
+  const unwrappedParams = use(params);
+
   useEffect(() => {
     const allProjects = getAllProjects();
-    const currentProjectId = parseInt(params.slug, 10);
+    const currentProjectId = parseInt(unwrappedParams.slug, 10);
 
     // Find the next project
     const currentIndex = allProjects.findIndex(p => p.id === currentProjectId);
@@ -27,7 +30,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
       // If this is the last project, loop back to the first one
       setNextProjectId(allProjects[0].id);
     }
-  }, [params.slug]);
+  }, [unwrappedParams.slug]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
@@ -45,7 +48,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
           </Link>
         </motion.div>
 
-        <ProjectSection slug={params.slug} />
+        <ProjectSection slug={unwrappedParams.slug} />
 
         {nextProjectId !== null && (
           <motion.div

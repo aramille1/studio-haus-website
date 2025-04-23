@@ -25,7 +25,7 @@ export function ServicesSection() {
           />
           <ServiceCard
             title="Web Design"
-            description="Our design team creates beautiful, responsive websites that deliver exceptional user experiences. We focus on clean aesthetics and intuitive navigation."
+            description="We design beautiful, responsive websites that deliver exceptional user experiences. We focus on clean aesthetics and intuitive navigation."
             icon={<Palette className="w-8 h-8" />}
             delay={0.2}
           />
