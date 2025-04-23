@@ -11,16 +11,18 @@ import Link from "next/link"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useState, useEffect, use } from "react"
 
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
+// The project detail page component
+export default function ProjectDetailPage({ params }: { params: { slug: string } | Promise<{ slug: string }> }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [nextProjectId, setNextProjectId] = useState<number | null>(null)
 
-  // Unwrap params at the component level
-  const unwrappedParams = use(params);
+  // Properly unwrap params with React.use() as recommended by Next.js
+  const unwrappedParams = 'then' in params ? use(params) : params;
+  const { slug } = unwrappedParams;
 
   useEffect(() => {
     const allProjects = getAllProjects();
-    const currentProjectId = parseInt(unwrappedParams.slug, 10);
+    const currentProjectId = parseInt(slug, 10);
 
     // Find the next project
     const currentIndex = allProjects.findIndex(p => p.id === currentProjectId);
@@ -30,7 +32,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
       // If this is the last project, loop back to the first one
       setNextProjectId(allProjects[0].id);
     }
-  }, [unwrappedParams.slug]);
+  }, [slug]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
@@ -48,7 +50,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
           </Link>
         </motion.div>
 
-        <ProjectSection slug={unwrappedParams.slug} />
+        <ProjectSection slug={slug} />
 
         {nextProjectId !== null && (
           <motion.div
