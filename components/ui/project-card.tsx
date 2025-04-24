@@ -39,7 +39,7 @@ export function ProjectCard({ index, item }: ProjectCardProps) {
             className=" transition-transform duration-700 group-hover:scale-105"
           />
         </div>
-        <h3 className="mt-4 text-2xl font-light">{projectTitle}</h3>
+        <h3 className="mt-4 text-2xl font-medium">{projectTitle}</h3>
         <p className="mt-2 text-lg text-[#666]">{projectDescription}</p>
       </motion.div>
     </Link>

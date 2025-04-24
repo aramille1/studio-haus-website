@@ -20,6 +20,27 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
     }
   }, [slug])
 
+  // Define technology icons based on project title
+  const getTechnologies = (title: string) => {
+    if (title.toLowerCase().includes('angular')) {
+      return [
+        { name: 'Figma', icon: '/icons/figma.svg' },
+        { name: 'Angular', icon: '/icons/angular.svg' },
+        { name: 'MongoDB', icon: '/icons/mongodb.svg' },
+        { name: 'Go lang', icon: '/icons/golang.svg' }
+      ];
+    } else if (title.toLowerCase().includes('bootcamp')) {
+      return [
+        { name: 'Figma', icon: '/icons/figma.svg' },
+        { name: 'Next.js', icon: '/icons/nextjs.svg' },
+        { name: 'Vercel', icon: '/icons/vercel.svg' },
+        { name: 'MongoDB', icon: '/icons/mongodb.svg' },
+        { name: 'SEO', icon: '/icons/seo.svg' }
+      ];
+    }
+    return [];
+  };
+
   if (!project) {
     return (
       <div className="flex justify-center items-center h-64">
@@ -28,6 +49,8 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
     )
   }
 
+  const technologies = getTechnologies(project.title);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -35,19 +58,19 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
       transition={{ duration: 0.8, delay: 0.2 }}
       className="max-w-7xl mx-auto"
     >
-      <h1 className="text-5xl md:text-6xl font-serif italic mb-8">{project.title}</h1>
+      <h1 className="text-5xl md:text-6xl font-serif italic mb-16">{project.title}</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
         <div>
-          <p className="text-xl md:text-2xl leading-relaxed font-light">
+          {/* <p className="text-xl md:text-2xl leading-relaxed font-light">
             {project.description}
-          </p>
+          </p> */}
 
-          <div className="mt-12 grid gap-4">
-            <div>
+          <div className="grid gap-4">
+            {/* <div>
               <h3 className="text-lg font-medium">Client</h3>
               <p className="text-xl">{project.client || "Brand Name"}</p>
-            </div>
+            </div> */}
 
             <div>
               <h3 className="text-lg font-medium">Services</h3>
@@ -55,9 +78,31 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
             </div>
 
             <div>
-              <h3 className="text-lg font-medium">Year</h3>
-              <p className="text-xl">{project.year || 2023}</p>
+              <h3 className="text-lg font-medium">Link</h3>
+              <p className="text-xl hover:underline"><a href={project.link} target="_blank">{project.link}</a></p>
             </div>
+
+            {technologies.length > 0 && (
+              <div>
+                <h3 className="text-lg font-medium mt-4">Technologies</h3>
+                <div className="flex flex-wrap gap-4 mt-2">
+                  {technologies.map((tech, index) => (
+                    <div key={index} className="flex flex-col items-center">
+                      <span className="text-sm text-gray-600">{tech.name}</span>
+                      <div className="w-12 h-12 relative mb-1">
+                        <Image
+                          src={tech.icon}
+                          alt={tech.name}
+                          width={48}
+                          height={48}
+                          className="object-contain"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -67,7 +112,7 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="aspect-video bg-[#e5e5e5] relative overflow-hidden"
         >
-          <Image src={project.image || "/placeholder.svg"} alt={`${project.title} hero`} fill className="border" />
+          <Image src={project.image || "/placeholder.svg"} alt={`${project.title} hero`} fill className="border border-black" />
         </motion.div>
       </div>
 
@@ -95,16 +140,16 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
           >
+
+            <div className="aspect-video bg-[#e5e5e5] relative overflow-hidden">
+              <Image src={project.gallery?.[1] || "/placeholder.svg"} alt="Our approach" fill className="border border-black" />
+            </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-light mb-8">Our Approach</h2>
               <p className="text-xl leading-relaxed">
                 {project.approach ||
                   "We developed a multi-year platform that focused on the core values of the brand and created emotional resonance with the target audience. This approach allowed for consistent messaging across all touchpoints while providing flexibility for seasonal campaigns."}
               </p>
-            </div>
-
-            <div className="aspect-video bg-[#e5e5e5] relative overflow-hidden">
-              <Image src={project.gallery?.[1] || "/placeholder.svg"} alt="Our approach" fill className="border" />
             </div>
           </motion.div>
         </section>
@@ -116,7 +161,7 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-light mb-8">The Results</h2>
+            {/* <h2 className="text-3xl md:text-4xl font-light mb-8">The Results</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               {project.results?.stats ? (
                 project.results.stats.map((stat, index) => (
@@ -141,7 +186,7 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
                   </div>
                 </>
               )}
-            </div>
+            </div> */}
             <p className="text-xl leading-relaxed">
               {project.results?.summary ||
                 "The campaign exceeded all expectations, creating a lasting impact on the brand's market position and customer loyalty. The platform continues to provide a foundation for ongoing marketing efforts."}
@@ -151,7 +196,7 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
       </div>
 
       <div className="grid grid-cols-1 gap-8">
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -159,9 +204,9 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
           className="aspect-video bg-[#e5e5e5] relative overflow-hidden"
         >
           <Image src={project.gallery?.[0] || "/placeholder.svg"} alt={`${project.title} gallery 1`} fill className="border" />
-        </motion.div>
+        </motion.div> */}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -181,7 +226,7 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
           >
             <Image src={project.gallery?.[3] || "/placeholder.svg"} alt={`${project.title} gallery 3`} fill className="border" />
           </motion.div>
-        </div>
+        </div> */}
       </div>
     </motion.div>
   )

@@ -79,12 +79,12 @@ export function HeroSection({ loaded }: HeroSectionProps) {
           animate={{ opacity: loaded ? 1 : 0 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          Like your dream house <IconWrapper icon={<House className="w-10 h-10 md:w-12 md:h-12 mb-2 mx-2" />} delay={1.2} />
-          your website should be functional <IconWrapper icon={<Wrench className="w-10 h-10 md:w-12 md:h-12 mb-2 mx-2" />} delay={1.6} />
-          well constructed, and look stunning <IconWrapper icon={<Sparkles className="w-10 h-10 md:w-12 md:h-12 mb-2 mx-2" />} delay={2.0} />
+          Like your dream house <IconWrapper icon={<House className="w-6 h-6 mb-0 mr-2 md:w-10 md:h-10 " />} delay={1.2} />
+          your website should be functional <IconWrapper icon={<Wrench className="w-6 h-6 mb-0 mr-2 md:w-10 md:h-10 " />} delay={1.6} />
+          well constructed, and look stunning <IconWrapper icon={<Sparkles className="w-6 h-6 mb-0 mr-2 md:w-10 md:h-10 " />} delay={2.0} />
           We design and build digital homes that do it all.
 
-          Ready to move online? We'll handle the heavy lifting<IconWrapper icon={<BicepsFlexed className="w-10 h-10 md:w-12 md:h-12 mb-2 mx-2" />} delay={2.4} />
+          Ready to move online? We'll handle the heavy lifting<IconWrapper icon={<BicepsFlexed className="w-6 h-6 mb-0 mr-2 md:w-10 md:h-10 " />} delay={2.4} />
 
           {/* <IconWrapper icon={<Building2 className="w-10 h-10 md:w-12 md:h-12" />} delay={1.2} />, everything moves
           fast. One site here, another gone{" "}

@@ -24,10 +24,10 @@ export const projects: Project[] = [
   {
     id: 1,
     title: "Angular Talents",
-    description: "Angular Talents is a platform for finding and hiring Angular developers.",
-    image: "/angular-talents.png",
+    description: "Dedicated platform for finding and hiring Angular developers.",
+    image: "/angulardevs.png",
     link: "https://angular-talents.com",
-    client: "Angular Talents LLC",
+    client: "Angular Talents",
     services: ["Web Development", "UI/UX Design", "Platform Development"],
     year: 2023,
     challenge: "Our client needed to create a specialized platform to connect Angular developers with companies looking to hire. The challenge was to build a platform that would stand out in a crowded market of job boards and create a smooth experience for both developers and employers.",
@@ -40,13 +40,13 @@ export const projects: Project[] = [
       ],
       summary: "The platform has become a go-to resource for Angular developers and companies seeking specialized talent. Monthly active users have grown consistently since launch."
     },
-    gallery: ["/angular-talents.png", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"]
+    gallery: ["/angulardevs.png", "/angularrole.png", "/placeholder.svg", "/placeholder.svg"]
   },
   {
     id: 2,
     title: "The Bootcamp Directory",
-    description: "The Bootcamp Directory - find the best bootcamps for your needs.",
-    image: "/thebootcampdirectory.png",
+    description: "Find the best bootcamps for your needs in one place.",
+    image: "/bootcampdir-details.png",
     link: "https://thebootcampdirectory.com",
     client: "Education First Inc.",
     services: ["Web Design", "Development", "SEO Strategy"],
@@ -61,7 +61,7 @@ export const projects: Project[] = [
       ],
       summary: "The Bootcamp Directory has become one of the most visited educational resource sites in the tech industry, helping thousands of students find the right programs for their career goals."
     },
-    gallery: ["/thebootcampdirectory.png", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"]
+    gallery: ["/bootcampdir-main.png", "/bootcampdir-main.png", "/placeholder.svg"]
   },
 ];
 
