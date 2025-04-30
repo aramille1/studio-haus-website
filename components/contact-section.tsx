@@ -34,6 +34,13 @@ export function ContactSection() {
     }
   }
 
+  // Enhanced email validation pattern
+  const validateEmail = (email: string): boolean => {
+    // RFC 5322 compliant email regex
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return emailRegex.test(email);
+  }
+
   const validateForm = () => {
     let isValid = true
     const newErrors = { name: "", email: "", message: "" }
@@ -46,7 +53,7 @@ export function ContactSection() {
     if (!formData.email.trim()) {
       newErrors.email = "Email is required"
       isValid = false
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    } else if (!validateEmail(formData.email)) {
       newErrors.email = "Please enter a valid email address"
       isValid = false
     }
@@ -190,6 +197,7 @@ export function ContactSection() {
                 value={formData.email}
                 onChange={handleChange}
                 className={`w-full p-4 bg-white border text-xl focus:outline-none focus:ring-2 focus:ring-[#333] ${errors.email ? 'border-red-500' : 'border-transparent'}`}
+                placeholder="your@email.com"
               />
               {errors.email && <p className="mt-1 text-red-500">{errors.email}</p>}
             </div>
