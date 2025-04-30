@@ -63,6 +63,27 @@ export const projects: Project[] = [
     },
     gallery: ["/bootcampdir-main.png", "/bootcampdir-main.png", "/placeholder.svg"]
   },
+  {
+    id: 3,
+    title: "Redesigning for Growth",
+    description: "Supporting a Coaching business expanding into B2B",
+    image: "/sonja-portfolio.jpg",
+    link: "https://thebootcampdirectory.com",
+    client: "Rizing.",
+    services: ["Web Design", "Brand Identity"],
+    year: 2024,
+    challenge: "",
+    approach: "",
+    // results: {
+    //   stats: [
+    //     { value: "+120K", label: "Monthly visitors" },
+    //     { value: "+85%", label: "Search ranking increase" },
+    //     { value: "+63%", label: "Conversion rate" }
+    //   ],
+    //   summary: "The Bootcamp Directory has become one of the most visited educational resource sites in the tech industry, helping thousands of students find the right programs for their career goals."
+    // },
+    // gallery: ["/bootcampdir-main.png", "/bootcampdir-main.png", "/placeholder.svg"]
+  },
 ];
 
 // Helper function to get a project by ID
