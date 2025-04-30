@@ -78,8 +78,8 @@ export function ProjectSection({ slug }: ProjectSectionProps) {
             </div>
 
             <div>
-              <h3 className="text-lg font-medium">Link</h3>
-              <p className="text-xl hover:underline"><a href={project.link} target="_blank">{project.link}</a></p>
+              {project.link && <h3 className="text-lg font-medium">Link</h3>}
+              {project.link && <p className="text-xl hover:underline"><a href={project.link} target="_blank">{project.link}</a></p>}
             </div>
 
             {technologies.length > 0 && (
