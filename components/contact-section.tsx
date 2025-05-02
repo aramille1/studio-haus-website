@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { useToast } from "@/components/ui/use-toast"
+import { useToast } from "@/hooks/use-toast"
 
 export function ContactSection() {
   const { toast } = useToast()
@@ -75,10 +75,19 @@ export function ContactSection() {
     }
 
     setIsSubmitting(true)
+    console.log("Form submission started");
 
     try {
+      // Show a test toast immediately to see if toasts are working
+      // toast({
+      //   title: "Sending message...",
+      //   description: "Just a moment while we process your request.",
+      // });
+      console.log("Test toast triggered");
+
       // Call API route to send Slack notification
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/api/contact',
+      {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -86,14 +95,19 @@ export function ContactSection() {
         body: JSON.stringify(formData),
       })
 
+      console.log("API response status:", response.status);
+
       if (response.ok) {
+        console.log("Success toast triggered");
         toast({
           title: "Message sent!",
           description: "We'll get back to you as soon as possible.",
+          className: "bg-green-500 text-white",
         })
         // Reset form after successful submission
         setFormData({ name: "", email: "", message: "" })
       } else {
+        console.log("Error toast triggered");
         toast({
           title: "Something went wrong",
           description: "Please try again later.",
@@ -101,6 +115,7 @@ export function ContactSection() {
         })
       }
     } catch (error) {
+      console.error("Submission error:", error);
       toast({
         title: "Error",
         description: "Could not send message. Please try again.",
@@ -124,7 +139,7 @@ export function ContactSection() {
         {/* <Sparkles /> */}
         {/* add before and after text */}
 
-        <div className="w-3/5 mx-auto">
+        <div className="w-full md:w-3/5 mx-auto">
           {/* <div>
             <motion.p
               className="text-xl md:text-2xl leading-relaxed font-light"
@@ -181,6 +196,7 @@ export function ContactSection() {
                 type="text"
                 id="name"
                 value={formData.name}
+                placeholder="Your name"
                 onChange={handleChange}
                 className={`w-full p-4 bg-white border text-xl focus:outline-none focus:ring-2 focus:ring-[#333] ${errors.name ? 'border-red-500' : 'border-transparent'}`}
               />
@@ -211,6 +227,7 @@ export function ContactSection() {
                 rows={5}
                 value={formData.message}
                 onChange={handleChange}
+                placeholder="Your message"
                 className={`w-full p-4 bg-white border text-xl focus:outline-none focus:ring-2 focus:ring-[#333] ${errors.message ? 'border-red-500' : 'border-transparent'}`}
               ></textarea>
               {errors.message && <p className="mt-1 text-red-500">{errors.message}</p>}
