@@ -9,7 +9,16 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Studio Haus",
   description: "We live in a world of here today gone tomorrow.",
-    generator: 'v0.dev'
+  icons: {
+    icon: [
+      { url: 'favicon/favicon.ico' },                          // default
+      { url: 'favicon/favicon-16x16.png', sizes: '16x16' },
+      { url: 'favicon/favicon-32x32.png', sizes: '32x32' },
+    ],
+    apple: 'favicon/apple-touch-icon.png',
+    shortcut: 'favicon/favicon.ico',
+  },
+  manifest: 'favicon/site.webmanifest',
 }
 
 export default function RootLayout({
